@@ -12,6 +12,7 @@ import { Result, ressults } from '../results';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  title = 'angular-f1';
   logoSrc = 'assets/f1-logo.png';
   raceResults: Result[] = ressults;
   raceYear: number = ressults[0].date.getFullYear();
