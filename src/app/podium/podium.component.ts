@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'f1-podium',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './podium.component.html',
   styleUrl: './podium.component.scss',
 })

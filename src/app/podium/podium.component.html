@@ -1,18 +1,23 @@
-<div *ngIf="podium.length > 0" class="podium-container">
+@if (podium.length > 0) {
+<div class="podium-container">
   <ul class="podium-list">
-    <li *ngFor="let driver of podium; index as i" class="podium-item">
-      <ng-container *ngIf="getMedalInfo(i); else defaultContent">
-        <img
-          [src]="getMedalInfo(i)!.src"
-          [alt]="getMedalInfo(i)!.alt"
-          class="medal"
-        />
-        {{ driver }}
-      </ng-container>
-      <ng-template #defaultContent> {{ i + 1 }}. {{ driver }} </ng-template>
+    @for (driver of podium; track driver; let i = $index) {
+    <li class="podium-item">
+      @if (getMedalInfo(i)) {
+      <img
+        [src]="getMedalInfo(i)!.src"
+        [alt]="getMedalInfo(i)!.alt"
+        class="medal"
+      />
+      {{ podium[i] }}
+      } @else {
+      {{ i + 1 }}. {{ podium[i] }}
+      }
     </li>
+    }
   </ul>
   <button type="button" (click)="hide()" title="smaller" class="hide-button">
     Hide
   </button>
 </div>
+}
