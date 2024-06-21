@@ -14,4 +14,6 @@ import { Result, ressults } from '../results';
 export class AppComponent {
   logoSrc = 'assets/f1-logo.png';
   raceResults: Result[] = ressults;
+  raceYear: number = ressults[0].date.getFullYear();
+  selectedRowIndex: number | null = null;
 }

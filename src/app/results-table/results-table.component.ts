@@ -11,4 +11,16 @@ import { Result } from '../../results';
 })
 export class ResultsTableComponent {
   @Input() results: Result[] = [];
+
+  @Input() selectedRowIndex: number | null = null;
+  @Output() selectedRowIndexChange = new EventEmitter<number | null>();
+
+  onRowClick(index: number) {
+    if (index === this.selectedRowIndex) {
+      this.selectedRowIndex = null;
+    } else {
+      this.selectedRowIndex = index;
+    }
+    this.selectedRowIndexChange.emit(this.selectedRowIndex);
+  }
 }

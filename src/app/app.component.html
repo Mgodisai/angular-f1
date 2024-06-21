@@ -1,6 +1,14 @@
 <div class="header">
-  <img [src]="logoSrc" width="200" />
-  <h1>Race results - 2021</h1>
+  <img [src]="logoSrc" height="100" />
+  <h1>Race results - {{ raceYear }}</h1>
 </div>
-<f1-results-table [results]="raceResults"></f1-results-table>
-<f1-podium></f1-podium>
+<f1-results-table
+  [results]="raceResults"
+  [(selectedRowIndex)]="selectedRowIndex"
+></f1-results-table>
+<f1-podium
+  [podium]="
+    selectedRowIndex == null ? [] : raceResults[selectedRowIndex].podium
+  "
+  (hidePodium)="this.selectedRowIndex = null"
+></f1-podium>

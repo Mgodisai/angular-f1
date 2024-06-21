@@ -1,1 +1,18 @@
-<p>podium works!</p>
+<div *ngIf="podium.length > 0" class="podium-container">
+  <ul class="podium-list">
+    <li *ngFor="let driver of podium; index as i" class="podium-item">
+      <ng-container *ngIf="getMedalInfo(i); else defaultContent">
+        <img
+          [src]="getMedalInfo(i)!.src"
+          [alt]="getMedalInfo(i)!.alt"
+          class="medal"
+        />
+        {{ driver }}
+      </ng-container>
+      <ng-template #defaultContent> {{ i + 1 }}. {{ driver }} </ng-template>
+    </li>
+  </ul>
+  <button type="button" (click)="hide()" title="smaller" class="hide-button">
+    Hide
+  </button>
+</div>
